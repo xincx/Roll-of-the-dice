@@ -81,3 +81,7 @@ crashlytics-build.properties
 
 # Ignore code-workspaces
 *.code-workspace
+
+.vsconfig
+UpgradeLog.htm
+Packages/packages-lock.json
