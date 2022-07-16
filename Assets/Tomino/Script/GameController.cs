@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     {
         Board board = new Board(10, 20);
 
-        boardView.SetBoard(board);
+        boardView.SetBoard(board, new TargetOutline());
         nextPieceView.SetBoard(board);
 
         universalInput = new UniversalInput(new KeyboardInput(), boardView.touchInput);

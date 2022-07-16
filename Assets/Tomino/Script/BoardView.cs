@@ -1,27 +1,31 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Tomino;
 
 public class BoardView : MonoBehaviour
 {
     enum Layer
     {
-        Blocks, PieceShadow
+        Blocks, TargetOutline, PieceShadow
     }
 
     public GameObject blockPrefab;
     public Sprite[] blockSprites;
     public Sprite shadowBlockSprite;
+    public Sprite targetOutlineSprite;
     public TouchInput touchInput = new TouchInput();
 
     Board gameBoard;
+    TargetOutline targetOutline;
     int renderedBoardHash = -1;
     bool forceRender = false;
     GameObjectPool<BlockView> blockViewPool;
     RectTransform rectTransform;
 
-    public void SetBoard(Board board)
+    public void SetBoard(Board board, TargetOutline targetOutline)
     {
         gameBoard = board;
+        this.targetOutline = targetOutline;
         int size = board.width * board.height + 10;
         blockViewPool = new GameObjectPool<BlockView>(blockPrefab, size, gameObject);
     }
@@ -31,6 +35,7 @@ public class BoardView : MonoBehaviour
         blockViewPool.DeactivateAll();
         RenderPieceShadow();
         RenderBlocks();
+        RenderTargetOutline();
     }
 
     void RenderBlocks()
@@ -46,6 +51,14 @@ public class BoardView : MonoBehaviour
         foreach (var position in gameBoard.GetPieceShadow())
         {
             RenderBlock(shadowBlockSprite, position, Layer.PieceShadow);
+        }
+    }
+
+    void RenderTargetOutline()
+    {
+        foreach (var position in targetOutline.positions)
+        {
+            RenderBlock(targetOutlineSprite, position, Layer.TargetOutline);
         }
     }
 
@@ -83,7 +96,11 @@ public class BoardView : MonoBehaviour
     Vector3 BlockPosition(int row, int column, Layer layer)
     {
         var size = BlockSize();
-        var position = new Vector3(column * size, row * size, (float)layer);
+
+        var numLayers = Enum.GetNames(typeof(Layer)).Length;
+        var zLayer = (float)layer / (numLayers - 1);
+
+        var position = new Vector3(column * size, row * size, zLayer);
         var offset = new Vector3(size / 2, size / 2, 0);
         return position + offset - PivotOffset();
     }
