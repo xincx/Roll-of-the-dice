@@ -22,10 +22,9 @@ public class BoardView : MonoBehaviour
     GameObjectPool<BlockView> blockViewPool;
     RectTransform rectTransform;
 
-    public void SetBoard(Board board, TargetOutline targetOutline)
+    public void SetBoard(Board board)
     {
         gameBoard = board;
-        this.targetOutline = targetOutline;
         int size = board.width * board.height + 10;
         blockViewPool = new GameObjectPool<BlockView>(blockPrefab, size, gameObject);
     }
@@ -56,7 +55,7 @@ public class BoardView : MonoBehaviour
 
     void RenderTargetOutline()
     {
-        foreach (var position in targetOutline.positions)
+        foreach (var position in gameBoard.targetOutline.positions)
         {
             RenderBlock(targetOutlineSprite, position, Layer.TargetOutline);
         }

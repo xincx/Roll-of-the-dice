@@ -42,6 +42,8 @@ namespace Tomino
 
         readonly IPieceProvider pieceProvider;
 
+        public readonly TargetOutline targetOutline;
+
         /// <summary>
         /// Initializes board with specified size and a `BalancedPieceProvider`.
         /// </summary>
@@ -62,6 +64,7 @@ namespace Tomino
             this.width = width;
             this.height = height;
             this.pieceProvider = pieceProvider;
+            this.targetOutline = new TargetOutline();
             top = height - 1;
         }
 
