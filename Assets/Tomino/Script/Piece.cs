@@ -52,7 +52,11 @@ namespace Tomino
         /// <param name="canRotate">Determines whether the piece can be rotated.</param>
         public Piece(Position[] blockPositions, PieceType type, bool canRotate = true)
         {
-            blocks = blockPositions.Map(position => new Block(position, type));
+            blocks = null;
+            while (blocks == null || !SameTypeCollisionChecker.ValidBlocksForSamePiece(blocks))
+            {
+                blocks = blockPositions.Map(position => new Block(position, type));
+            }
             Type = type;
             this.canRotate = canRotate;
         }

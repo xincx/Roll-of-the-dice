@@ -2,11 +2,11 @@
 {
     public static class Text
     {
-        public static readonly string GameFinished = "GAME FINISHED";
+        public static readonly string GameFinished = "LEVEL FINISHED";
         public static readonly string GamePaused = "GAME PAUSED";
-        public static readonly string PlayAgain = "PLAY AGAIN";
+        public static readonly string PlayAgain = "RETRY LEVEL";
         public static readonly string Resume = "RESUME";
-        public static readonly string NewGame = "NEW GAME";
+        public static readonly string NewGame = "NEW LEVEL";
         public static readonly string Settings = "SETTINGS";
         public static readonly string Music = "MUSIC";
         public static readonly string Close = "CLOSE";

@@ -51,6 +51,24 @@ namespace Tomino
             return a.BlockNum == b.BlockNum || (a.BlockNum + 1) + (b.BlockNum + 1) == 7;
         }
 
+        // Two blocks of the same piece cannot have the same color or number
+        static public bool ValidBlocksForSamePiece(Block[] blocks)
+        {
+            for (int i = 0; i < blocks.Length; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    bool haveMatch = MatchingColors(blocks[i], blocks[j]) || MatchingNumbers(blocks[i], blocks[j]);
+                    bool areNeighbors = blocks[i].Position.IsNeighborOf(blocks[j].Position);
+                    if (haveMatch && areNeighbors)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         static public int ComputeBonusScoreDelta(Board board, Piece justFallenPiece)
         {
             int numMatchColor = 0;

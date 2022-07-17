@@ -76,6 +76,16 @@ namespace Tomino
         /// </summary>
         public void Start()
         {
+            StartAndOptionalRegenerate(true);
+        }
+
+        public void Restart()
+        {
+            StartAndOptionalRegenerate(false);
+        }
+
+        void StartAndOptionalRegenerate(bool regenerate)
+        {
             isPlaying = true;
             ResumedEvent();
             elapsedTime = 0;
@@ -84,7 +94,10 @@ namespace Tomino
             matchScore = new Score();
             Level = new Level();
             board.RemoveAllBlocks();
-            board.RegenerateTargetOutline();
+            if (regenerate)
+            {
+                board.RegenerateTargetOutline();
+            }
             AddPiece();
         }
 

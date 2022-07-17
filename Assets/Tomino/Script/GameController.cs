@@ -80,8 +80,10 @@ public class GameController : MonoBehaviour
 
     void OnGameFinished()
     {
-        alertView.SetTitle(Constant.Text.GameFinished);
-        alertView.AddButton(Constant.Text.PlayAgain, game.Start, audioPlayer.PlayNewGameClip);
+        int score = game.matchScore.Value;
+        alertView.SetTitle(Constant.Text.GameFinished + "\nScore: " + score.ToString());
+        alertView.AddButton(Constant.Text.PlayAgain, game.Restart, audioPlayer.PlayNewGameClip);
+        alertView.AddButton(Constant.Text.NewGame, game.Start, audioPlayer.PlayNewGameClip);
         alertView.Show();
     }
 
