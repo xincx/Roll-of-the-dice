@@ -10,5 +10,15 @@ namespace Tomino
             Row = row;
             Column = column;
         }
+
+        public bool Equals(Position other)
+        {
+            return Row == other.Row && Column == other.Column;
+        }
+
+        public override string ToString()
+        {
+            return "(" + Row.ToString() + ", " + Column.ToString() + ")";
+        }
     }
 }

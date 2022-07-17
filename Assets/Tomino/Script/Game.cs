@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Tomino
 {
     /// <summary>
@@ -43,6 +45,7 @@ namespace Tomino
         public Score Score { get; private set; }
 
         public Score matchScore { get; private set; }
+        int bonusPoints = 0;
 
         /// <summary>
         /// The current level.
@@ -76,6 +79,7 @@ namespace Tomino
             isPlaying = true;
             ResumedEvent();
             elapsedTime = 0;
+            bonusPoints = 0;
             Score = new Score();
             matchScore = new Score();
             Level = new Level();
@@ -224,7 +228,11 @@ namespace Tomino
             Score.RowsCleared(rowsCount);
             Level.RowsCleared(rowsCount);
 
-            matchScore = new Score(MatchScoreCalculator.ComputeMatchScore(board));
+            var correctMinusIncorrect = MatchScoreCalculator.ComputeMatchScore(board);
+            var bonusPointsDelta = SameTypeCollisionChecker.ComputeBonusScoreDelta(board, board.piece);
+
+            bonusPoints += bonusPointsDelta;
+            matchScore = new Score(correctMinusIncorrect + bonusPoints);
 
             AddPiece();
         }

@@ -77,7 +77,7 @@ namespace Tomino
             var incorrect = counts[(int)Correctness.Incorrect, (int)ExistenceInTarget.Missing];
             int score = correct - incorrect;
             Debug.Log("Match score: " + score);
-            return score;
+            return 100 * score;
         }
     }
 }
