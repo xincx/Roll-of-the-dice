@@ -41,8 +41,9 @@ namespace Tomino
         public Piece nextPiece => pieceProvider.GetNextPiece();
 
         public readonly IPieceProvider pieceProvider;
+        private ITargetOutlineProvider targetOutlineProvider;
 
-        public readonly TargetOutline targetOutline;
+        public TargetOutline targetOutline { get; private set; }
 
         /// <summary>
         /// Initializes board with specified size and a `BalancedPieceProvider`.
@@ -67,8 +68,15 @@ namespace Tomino
             this.width = width;
             this.height = height;
             this.pieceProvider = pieceProvider;
-            this.targetOutline = targetOutlineProvider.GetTargetOutline();
+            this.targetOutlineProvider = targetOutlineProvider;
             top = height - 1;
+
+            RegenerateTargetOutline();
+        }
+
+        public void RegenerateTargetOutline()
+        {
+            this.targetOutline = targetOutlineProvider.GetTargetOutline();
         }
 
         /// <summary>

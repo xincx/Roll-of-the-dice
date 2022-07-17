@@ -80,6 +80,7 @@ namespace Tomino
             matchScore = new Score();
             Level = new Level();
             board.RemoveAllBlocks();
+            board.RegenerateTargetOutline();
             AddPiece();
         }
 

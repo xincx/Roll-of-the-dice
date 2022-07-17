@@ -5,20 +5,22 @@ namespace Tomino
 {
     public class SimulationTargetOutlineProvider : ITargetOutlineProvider
     {
-        private Random random = new Random();
+        private int width;
 
-        private Simulation simulation;
+        private int height;
 
         private int numIterations;
 
         public SimulationTargetOutlineProvider(int width, int height, int numIterations)
         {
-            simulation = new Simulation(width, height);
+            this.width = width;
+            this.height = height;
             this.numIterations = numIterations;
         }
 
         public TargetOutline GetTargetOutline()
         {
+            var simulation = new Simulation(width, height);
             for (int i = 0; i < numIterations; i++)
             {
                 simulation.AfterNextStep();
