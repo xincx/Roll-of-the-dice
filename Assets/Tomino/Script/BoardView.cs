@@ -6,7 +6,7 @@ public class BoardView : MonoBehaviour
 {
     enum Layer
     {
-        Blocks, TargetOutline, PieceShadow
+        Blocks, PieceShadow, TargetOutline
     }
 
     public GameObject blockPrefab;
