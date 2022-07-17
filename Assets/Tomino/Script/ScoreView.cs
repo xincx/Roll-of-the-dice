@@ -11,6 +11,14 @@ public class ScoreView : MonoBehaviour
     {
         var padLength = Constant.ScoreFormat.Length;
         var padCharacter = Constant.ScoreFormat.PadCharacter;
-        scoreText.text = game.Score.Value.ToString().PadLeft(padLength, padCharacter);
+        int scoreValue = game.matchScore.Value;
+        bool isNegative = scoreValue < 0;
+        if (isNegative)
+        {
+            scoreValue = -scoreValue;
+            padLength--;
+        }
+        string negativePrefix = isNegative ? "-" : "";
+        scoreText.text = negativePrefix + scoreValue.ToString().PadLeft(padLength, padCharacter);
     }
 }

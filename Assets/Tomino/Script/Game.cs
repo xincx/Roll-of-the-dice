@@ -42,6 +42,8 @@ namespace Tomino
         /// </summary>
         public Score Score { get; private set; }
 
+        public Score matchScore { get; private set; }
+
         /// <summary>
         /// The current level.
         /// </summary>
@@ -75,6 +77,7 @@ namespace Tomino
             ResumedEvent();
             elapsedTime = 0;
             Score = new Score();
+            matchScore = new Score();
             Level = new Level();
             board.RemoveAllBlocks();
             AddPiece();
@@ -211,6 +214,9 @@ namespace Tomino
             int rowsCount = board.RemoveFullRows();
             Score.RowsCleared(rowsCount);
             Level.RowsCleared(rowsCount);
+
+            matchScore = new Score(MatchScoreCalculator.ComputeMatchScore(board));
+
             AddPiece();
         }
 
