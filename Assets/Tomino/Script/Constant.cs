@@ -2,7 +2,7 @@
 {
     public static class Text
     {
-        public static readonly string GameFinished = "LEVEL FINISHED";
+        public static readonly string GameFinished = "LEVEL COMPLETED";
         public static readonly string GamePaused = "GAME PAUSED";
         public static readonly string PlayAgain = "RETRY LEVEL";
         public static readonly string Resume = "RESUME";
