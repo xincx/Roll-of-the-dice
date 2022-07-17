@@ -92,7 +92,7 @@ public class GameTests
 
         for (var i = 1; i < secondBlockPositions.Length; ++i)
         {
-            UpdateGameWithAction(PlayerAction.Rotate);
+            UpdateGameWithAction(PlayerAction.RotateRight);
             var secondBlock = board.Blocks[1];
 
             Assert.AreEqual(secondBlockPositions[i].Row, secondBlock.Position.Row);
@@ -148,7 +148,7 @@ public class GameTests
         for (int i = 0; i < 50; ++i)
         {
             UpdateGameWithAction(action);
-            UpdateGameWithAction(PlayerAction.Rotate);
+            UpdateGameWithAction(PlayerAction.RotateRight);
         }
 
         Assert.IsFalse(board.HasCollisions());
