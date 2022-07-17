@@ -17,8 +17,6 @@ public class BoardView : MonoBehaviour
 
     Board gameBoard;
     TargetOutline targetOutline;
-    int renderedBoardHash = -1;
-    bool forceRender = false;
     GameObjectPool<BlockView> blockViewPool;
     RectTransform rectTransform;
 
@@ -77,19 +75,7 @@ public class BoardView : MonoBehaviour
     void Update()
     {
         touchInput.blockSize = BlockSize();
-
-        var hash = gameBoard.GetHashCode();
-        if (forceRender || hash != renderedBoardHash)
-        {
-            RenderGameBoard();
-            renderedBoardHash = hash;
-            forceRender = false;
-        }
-    }
-
-    void OnRectTransformDimensionsChange()
-    {
-        forceRender = true;
+        RenderGameBoard();
     }
 
     Vector3 BlockPosition(int row, int column, Layer layer)
