@@ -20,7 +20,7 @@ namespace Tomino
         /// <summary>
         /// The num value of the block.
         /// </summary>
-        public int BlockNum { get; private set; }
+        public int BlockNum { get; set; }
 
         /// <summary>
         /// Creates a block with specified position and type.

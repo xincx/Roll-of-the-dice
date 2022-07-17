@@ -186,6 +186,14 @@ namespace Tomino
         {
             if (!piece.canRotate)
             {
+                int tempRow = piece.blocks[0].Position.Row;
+                int tempColumn = piece.blocks[0].Position.Column;
+
+                for (int i = 0; i < piece.blocks.Length - 1; i++)
+                {
+                    piece.blocks[i].MoveTo(piece.blocks[i + 1].Position.Row, piece.blocks[i + 1].Position.Column);
+                }
+                piece.blocks[piece.blocks.Length - 1].MoveTo(tempRow, tempColumn);
                 return false;
             }
 
@@ -211,6 +219,14 @@ namespace Tomino
         {
             if (!piece.canRotate)
             {
+                int tempRow = piece.blocks[piece.blocks.Length - 1].Position.Row;
+                int tempColumn = piece.blocks[piece.blocks.Length - 1].Position.Column;
+
+                for (int i = piece.blocks.Length - 1; i > 0; i--)
+                {
+                    piece.blocks[i].MoveTo(piece.blocks[i - 1].Position.Row, piece.blocks[i - 1].Position.Column);
+                }
+                piece.blocks[0].MoveTo(tempRow, tempColumn);
                 return false;
             }
 
