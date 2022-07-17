@@ -71,7 +71,12 @@ public class GameController : MonoBehaviour
 
     public void OnRotateButtonTap()
     {
-        game.SetNextAction(PlayerAction.Rotate);
+        game.SetNextAction(PlayerAction.RotateRight);
+    }
+
+    public void OnRotateLeftButtonTap()
+    {
+        game.SetNextAction(PlayerAction.RotateLeft);
     }
 
     void OnGameFinished()
