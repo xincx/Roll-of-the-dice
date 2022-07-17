@@ -6,6 +6,11 @@ namespace Tomino
     {
         public int Value { get; private set; }
 
+        public Score(int value = 0)
+        {
+            Value = value;
+        }
+
         private Dictionary<int, int> scoreForClearedRows = new Dictionary<int, int>()
         {
             {1, 100}, {2, 300}, {3, 500}, {4, 800}
