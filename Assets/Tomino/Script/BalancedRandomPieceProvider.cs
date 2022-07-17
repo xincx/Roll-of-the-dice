@@ -6,14 +6,14 @@ namespace Tomino
     public class BalancedRandomPieceProvider : IPieceProvider
     {
         private Random random = new Random();
-        private List<int> pool = new List<int>();
+        private List<Piece> pool = new List<Piece>();
         private const int numDuplicates = 4;
 
-        public Piece GetPiece() => AvailablePieces.All()[GetPopulatedPool().TakeFirst()];
+        public Piece GetPiece() => GetPopulatedPool().TakeFirst();
 
-        public Piece GetNextPiece() => AvailablePieces.All()[GetPopulatedPool()[0]];
+        public Piece GetNextPiece() => GetPopulatedPool()[0];
 
-        private List<int> GetPopulatedPool()
+        private List<Piece> GetPopulatedPool()
         {
             if (pool.Count == 0)
             {
@@ -24,9 +24,10 @@ namespace Tomino
 
         private void PopulatePool()
         {
-            for (var index = 0; index < AvailablePieces.All().Length; ++index)
+            for (int repeat = 0; repeat < numDuplicates; repeat++)
             {
-                pool.Add(index, numDuplicates);
+                var generatedPieces = AvailablePieces.All();
+                pool.AddRange(generatedPieces);
             }
             pool.Shuffle(random);
         }
