@@ -84,17 +84,14 @@ namespace Tomino
 
                     if (MatchingNumbers(block, neighborBlock))
                     {
-                        Debug.Log("Matching numbers " + block.Position.ToString() + " " + neighborBlock.Position.ToString());
                         numMatchNumber++;
                     }
                     if (MatchingColors(block, neighborBlock))
                     {
-                        Debug.Log("Matching colors " + block.Position.ToString() + " " + neighborBlock.Position.ToString());
                         numMatchColor++;
                     }
                 }
             }
-            Debug.Log("After this piece fell, got " + numMatchColor + " matching colors and " + numMatchNumber + " matchingNumbers");
             return 50 * numMatchColor + 50 * numMatchNumber;
         }
     }

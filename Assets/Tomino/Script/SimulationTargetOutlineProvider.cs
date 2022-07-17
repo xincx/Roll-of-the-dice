@@ -40,7 +40,6 @@ namespace Tomino
                 }
             }
             Metrics metrics = TargetOutlineEvaluator.ComputeMetrics(width, height, candidateOutlines[bestCandidate]);
-            Debug.Log("Metrics: " + metrics.ToString() + " => " + candidateScores[bestCandidate]);
             return candidateOutlines[bestCandidate];
         }
 

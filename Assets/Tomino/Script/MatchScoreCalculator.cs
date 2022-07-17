@@ -49,24 +49,6 @@ namespace Tomino
                     counts[(int)correctness, (int)existence]++;
                 }
             }
-
-            string countMsg = "From counts: ";
-            for (int i = 0; i < 2; i++)
-            {
-                for (int j = 0; j < 2; j++)
-                {
-                    countMsg += counts[i, j].ToString();
-                    if (j == 0)
-                    {
-                        countMsg += ", ";
-                    }
-                }
-                if (i == 0)
-                {
-                    countMsg += '\n';
-                }
-            }
-            Debug.Log(countMsg);
             return new CorrectnessExistenceCounts(counts);
         }
 
@@ -76,7 +58,6 @@ namespace Tomino
             var correct = counts[(int)Correctness.Correct, (int)ExistenceInTarget.Exists];
             var incorrect = counts[(int)Correctness.Incorrect, (int)ExistenceInTarget.Missing];
             int score = correct - incorrect;
-            Debug.Log("Match score: " + score);
             return 100 * score;
         }
     }
