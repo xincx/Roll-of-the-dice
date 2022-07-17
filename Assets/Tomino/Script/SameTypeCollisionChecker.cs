@@ -92,7 +92,9 @@ namespace Tomino
                     }
                 }
             }
-            return 50 * numMatchColor + 50 * numMatchNumber;
+            int colorBonus = 25;
+            int numberBonus = 50;
+            return colorBonus * numMatchColor + (numberBonus - colorBonus) * numMatchNumber;
         }
     }
 }
