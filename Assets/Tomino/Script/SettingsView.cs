@@ -7,7 +7,6 @@ public class SettingsView : MonoBehaviour
 {
     public Text titleText;
     public Toggle musicToggle;
-    public Toggle screenButtonsToggle;
     public Button closeButton;
     public AudioPlayer audioPlayer;
 
@@ -22,14 +21,6 @@ public class SettingsView : MonoBehaviour
         musicToggle.onValueChanged.AddListener((enabled) =>
         {
             Settings.MusicEnabled = enabled;
-            PlayToggleAudioClip(enabled);
-        });
-
-        screenButtonsToggle.isOn = Settings.ScreenButonsEnabled;
-        screenButtonsToggle.GetComponentInChildren<Text>().text = Constant.Text.ScreenButtons;
-        screenButtonsToggle.onValueChanged.AddListener((enabled) =>
-        {
-            Settings.ScreenButonsEnabled = enabled;
             PlayToggleAudioClip(enabled);
         });
 
