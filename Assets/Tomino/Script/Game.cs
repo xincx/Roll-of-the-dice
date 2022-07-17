@@ -115,10 +115,15 @@ namespace Tomino
             board.AddPiece();
             if (board.HasCollisions())
             {
-                isPlaying = false;
-                PausedEvent();
-                FinishedEvent();
+                GameOverState();
             }
+        }
+
+        void GameOverState()
+        {
+            isPlaying = false;
+            PausedEvent();
+            FinishedEvent();
         }
 
         /// <summary>
@@ -200,6 +205,9 @@ namespace Tomino
                     Score.PieceFinishedFalling(board.FallPiece());
                     ResetElapsedTime();
                     PieceFinishedFalling();
+                    break;
+                case PlayerAction.TriggerEndGame:
+                    GameOverState();
                     break;
             }
             if (pieceMoved)

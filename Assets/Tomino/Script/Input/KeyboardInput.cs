@@ -15,6 +15,7 @@ public class KeyboardInput : IPlayerInput
         {KeyCode.X, PlayerAction.RotateRight},
         {KeyCode.Z, PlayerAction.RotateLeft},
         {KeyCode.Space, PlayerAction.Fall},
+        {KeyCode.V, PlayerAction.TriggerEndGame}
     };
 
     readonly List<KeyCode> repeatingKeys = new List<KeyCode>()
