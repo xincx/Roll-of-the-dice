@@ -34,7 +34,7 @@ namespace Tomino
 
             Random rnd = new Random();
 
-            BlockNum = rnd.Next(0, 5);
+            BlockNum = rnd.Next(0, 6);
         }
 
         /// <summary>
