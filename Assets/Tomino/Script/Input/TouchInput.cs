@@ -54,7 +54,7 @@ public class TouchInput : IPlayerInput
 
                 if (touchDuration < tapMaxDuration && offset < tapMaxOffset)
                 {
-                    playerAction = PlayerAction.Rotate;
+                    playerAction = PlayerAction.RotateRight;
                 }
                 else if (moveDownDetected && touchDuration < swipeMaxDuration)
                 {

@@ -176,7 +176,7 @@ namespace Tomino
         /// <summary>
         /// Rotates the current piece clockwise.
         /// </summary>
-        public bool RotatePiece()
+        public bool RotatePieceRight()
         {
             if (!piece.canRotate)
             {
@@ -191,6 +191,31 @@ namespace Tomino
                 var row = block.Position.Row - offset.Row;
                 var column = block.Position.Column - offset.Column;
                 block.MoveTo(-column + offset.Row, row + offset.Column);
+            }
+
+            if (HasCollisions() && !ResolveCollisionsAfterRotation())
+            {
+                RestoreSavedPiecePosition(piecePosition);
+                return false;
+            }
+            return true;
+        }
+
+        public bool RotatePieceLeft()
+        {
+            if (!piece.canRotate)
+            {
+                return false;
+            }
+
+            Dictionary<Block, Position> piecePosition = piece.GetPositions();
+            var offset = piece.blocks[0].Position;
+
+            foreach (var block in piece.blocks)
+            {
+                var row = block.Position.Row - offset.Row;
+                var column = block.Position.Column - offset.Column;
+                block.MoveTo(column + offset.Row, -row + offset.Column);
             }
 
             if (HasCollisions() && !ResolveCollisionsAfterRotation())

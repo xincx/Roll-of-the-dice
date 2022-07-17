@@ -183,9 +183,14 @@ namespace Tomino
                     }
                     break;
 
-                case PlayerAction.Rotate:
-                    var didRotate = board.RotatePiece();
+                case PlayerAction.RotateRight:
+                    var didRotate = board.RotatePieceRight();
                     if (didRotate) PieceRotatedEvent();
+                    break;
+
+                case PlayerAction.RotateLeft:
+                    var didRotateLeft = board.RotatePieceLeft();
+                    if (didRotateLeft) PieceRotatedEvent();
                     break;
 
                 case PlayerAction.Fall:
