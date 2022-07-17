@@ -9,9 +9,7 @@ public class PieceView : MonoBehaviour
 
     private Board board;
     GameObjectPool<BlockView> blockViewPool;
-    private PieceType? renderedPieceType;
     private int blockPoolSize = 10;
-    private bool forceRender = false;
 
     public void SetBoard(Board board)
     {
@@ -21,16 +19,7 @@ public class PieceView : MonoBehaviour
 
     void Update()
     {
-        if (renderedPieceType == null || forceRender || board.nextPiece.Type != renderedPieceType)
-        {
-            RenderPiece(board.nextPiece);
-            renderedPieceType = board.nextPiece.Type;
-            forceRender = false;
-        }
-    }
-    void OnRectTransformDimensionsChange()
-    {
-        forceRender = true;
+        RenderPiece(board.nextPiece);
     }
 
     void RenderPiece(Piece piece)
