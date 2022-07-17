@@ -53,7 +53,7 @@ namespace Tomino
         public Board(int width, int height) : this(width,
                                                    height,
                                                    new BalancedRandomPieceProvider(),
-                                                   new SimulationTargetOutlineProvider(width, height, 20))
+                                                   new SimulationTargetOutlineProvider(width, height, 14, 40))
         {
         }
 
