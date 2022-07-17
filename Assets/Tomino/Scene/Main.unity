@@ -4255,7 +4255,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2e6bd5509a3b1475d9ea8f11481a7c57, type: 3}
   - {fileID: 21300000, guid: 27630e5701be3434a9d631b8fb12fab7, type: 3}
   shadowBlockSprite: {fileID: 21300000, guid: 03a75a7f153bc46f780a3b96e2729505, type: 3}
-  targetOutlineSprite: {fileID: 21300000, guid: 61874c2a26d665544b662d7144f2c926,
+  targetOutlineSprite: {fileID: 21300000, guid: b0562358784eace41ad714919b0ad54c,
     type: 3}
 --- !u!1 &1678670804
 GameObject:

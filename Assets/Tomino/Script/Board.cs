@@ -40,7 +40,7 @@ namespace Tomino
         /// <returns></returns>
         public Piece nextPiece => pieceProvider.GetNextPiece();
 
-        readonly IPieceProvider pieceProvider;
+        public readonly IPieceProvider pieceProvider;
 
         public readonly TargetOutline targetOutline;
 
@@ -49,7 +49,10 @@ namespace Tomino
         /// </summary>
         /// <param name="width">The width of the board.</param>
         /// <param name="height">The height of the board.</param>
-        public Board(int width, int height) : this(width, height, new BalancedRandomPieceProvider())
+        public Board(int width, int height) : this(width,
+                                                   height,
+                                                   new BalancedRandomPieceProvider(),
+                                                   new SimulationTargetOutlineProvider(width, height, 20))
         {
         }
 
@@ -59,12 +62,12 @@ namespace Tomino
         /// <param name="width">The width of the board.</param>
         /// <param name="height">The height of the board.</param>
         /// <param name="pieceProvider">The piece provider.</param>
-        public Board(int width, int height, IPieceProvider pieceProvider)
+        public Board(int width, int height, IPieceProvider pieceProvider, ITargetOutlineProvider targetOutlineProvider)
         {
             this.width = width;
             this.height = height;
             this.pieceProvider = pieceProvider;
-            this.targetOutline = new TargetOutline();
+            this.targetOutline = targetOutlineProvider.GetTargetOutline();
             top = height - 1;
         }
 

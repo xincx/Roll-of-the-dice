@@ -27,7 +27,7 @@ public class BoardTests
     [Test]
     public void ComputesPieceShadow()
     {
-        var board = new Board(3, 3, new StubPieceProvider());
+        var board = new Board(3, 3, new StubPieceProvider(), new StubTargetOutlineProvider());
         board.AddPiece();
         var shadow = board.GetPieceShadow();
 
@@ -37,7 +37,7 @@ public class BoardTests
 
     public void ComputesNextGeneratedPiece()
     {
-        var board = new Board(20, 20, new BalancedRandomPieceProvider());
+        var board = new Board(20, 20, new BalancedRandomPieceProvider(), new StubTargetOutlineProvider());
         var nextPiece = board.nextPiece;
 
         board.AddPiece();
@@ -45,5 +45,5 @@ public class BoardTests
         Assert.AreEqual(board.piece.GetType(), nextPiece.GetType());
     }
 
-    Board CreateEmptyBoard() => new Board(3, 3, new StubPieceProvider());
+    Board CreateEmptyBoard() => new Board(3, 3, new StubPieceProvider(), new StubTargetOutlineProvider());
 }

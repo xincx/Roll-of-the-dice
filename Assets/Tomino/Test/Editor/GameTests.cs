@@ -13,7 +13,8 @@ public class GameTests
     {
         input = new StubInput();
         pieceProvider = new StubPieceProvider();
-        board = new Board(10, 20, pieceProvider);
+        var targetOutlineProvider = new StubTargetOutlineProvider();
+        board = new Board(10, 20, pieceProvider, targetOutlineProvider);
         game = new Game(board, input);
         game.Start();
     }
@@ -86,7 +87,8 @@ public class GameTests
         };
 
         pieceProvider = new StubPieceProvider(StubPieceType.TwoBlocks);
-        board = new Board(3, 3, pieceProvider);
+        var targetOutlineProvider = new StubTargetOutlineProvider();
+        board = new Board(3, 3, pieceProvider, targetOutlineProvider);
         game = new Game(board, input);
         game.Start();
 
