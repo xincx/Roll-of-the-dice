@@ -1,3 +1,5 @@
+using System;
+
 namespace Tomino
 {
     /// <summary>
@@ -16,6 +18,11 @@ namespace Tomino
         public Position Position { get; private set; }
 
         /// <summary>
+        /// The num value of the block.
+        /// </summary>
+        public int BlockNum { get; private set; }
+
+        /// <summary>
         /// Creates a block with specified position and type.
         /// </summary>
         /// <param name="position">The position of the block.</param>
@@ -24,6 +31,10 @@ namespace Tomino
         {
             Position = position;
             this.Type = type;
+
+            Random rnd = new Random();
+
+            BlockNum = rnd.Next(0, 5);
         }
 
         /// <summary>

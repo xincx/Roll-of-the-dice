@@ -41,7 +41,7 @@ public class BoardView : MonoBehaviour
     {
         foreach (var block in gameBoard.Blocks)
         {
-            RenderBlock(BlockSprite(block.Type), block.Position, Layer.Blocks);
+            RenderBlock(BlockSprite(block.BlockNum), block.Position, Layer.Blocks);
         }
     }
 
@@ -110,9 +110,9 @@ public class BoardView : MonoBehaviour
         return boardWidth / gameBoard.width;
     }
 
-    public Sprite BlockSprite(PieceType type)
+    public Sprite BlockSprite(int value)
     {
-        return blockSprites[(int)type];
+        return blockSprites[value];
     }
 
     public Vector3 PivotOffset()

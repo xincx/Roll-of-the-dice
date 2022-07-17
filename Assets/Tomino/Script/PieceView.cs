@@ -42,7 +42,7 @@ public class PieceView : MonoBehaviour
         foreach (var block in piece.blocks)
         {
             var blockView = blockViewPool.GetAndActivate();
-            blockView.SetSprite(BlockSprite(block.Type));
+            blockView.SetSprite(BlockSprite(block.BlockNum));
             blockView.SetSize(blockSize);
             blockView.SetPosition(BlockPosition(block.Position, blockSize));
         }
@@ -80,8 +80,8 @@ public class PieceView : MonoBehaviour
         return Mathf.Min(width / numBlocks, height / numBlocks);
     }
 
-    public Sprite BlockSprite(PieceType type)
+    public Sprite BlockSprite(int value)
     {
-        return blockSprites[(int)type];
+        return blockSprites[value];
     }
 }
