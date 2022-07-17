@@ -12,6 +12,7 @@ public class KeyboardInput : IPlayerInput
         {KeyCode.LeftArrow, PlayerAction.MoveLeft},
         {KeyCode.RightArrow, PlayerAction.MoveRight},
         {KeyCode.DownArrow, PlayerAction.MoveDown},
+        {KeyCode.UpArrow, PlayerAction.RotateRight},
         {KeyCode.X, PlayerAction.RotateRight},
         {KeyCode.Z, PlayerAction.RotateLeft},
         {KeyCode.Space, PlayerAction.Fall},
